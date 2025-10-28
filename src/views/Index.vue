@@ -21,21 +21,25 @@ import Button from '@/components/Button.vue'
         <div class="grid grid-cols-2 gap-6">
           <Button class="grid-cols-1 aspect-3/1 grow">
             <img class="size-6" src="@/assets/images/icon/dollar.svg" />
-            <div class="2xl:text-lg truncate">BUY $DUNK</div>
+            <img class="h-5 2xl:h-6" src="@/assets/images/text/buy-dunk.svg" />
+            <!-- <div class="2xl:text-lg truncate">BUY $DUNK</div> -->
           </Button>
           <Button class="grid-cols-1 aspect-3/1 grow" disabled>
             <img class="size-6" src="@/assets/images/icon/star.svg" />
-            <div class="2xl:text-lg truncate">FOLLOW TWITTER</div>
+            <img class="h-4 2xl:h-5" src="@/assets/images/text/follow-twitter.svg" />
+            <!-- <div class="2xl:text-lg truncate">FOLLOW TWITTER</div> -->
           </Button>
         </div>
         <div class="grid grid-cols-2 gap-6">
           <Button class="grid-cols-1 aspect-3/1 grow">
             <img class="size-6" src="@/assets/images/icon/group-add.svg" />
-            <div class="2xl:text-lg truncate">JOIN TELEGRAM</div>
+            <img class="h-4 2xl:h-5" src="@/assets/images/text/join-telegram.svg" />
+            <!-- <div class="2xl:text-lg truncate">JOIN TELEGRAM</div> -->
           </Button>
           <Button class="grid-cols-1 aspect-3/1 grow">
             <img class="size-6" src="@/assets/images/icon/user-add.svg" />
-            <div class="2xl:text-lg truncate">JOIN DISCORD</div>
+            <img class="h-4 2xl:h-5" src="@/assets/images/text/join-discord.svg" />
+            <!-- <div class="2xl:text-lg truncate">JOIN DISCORD</div> -->
           </Button>
         </div>
       </div>
