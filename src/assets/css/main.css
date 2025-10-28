@@ -1,0 +1,16 @@
+@import 'tailwindcss';
+
+@font-face {
+  font-family: 'Graffiti1c';
+  src: url('@/assets/fonts/graffiti1c.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+html,
+body,
+button,
+#app {
+  font-family: 'Graffiti1c';
+}
