@@ -14,3 +14,12 @@ button,
 #app {
   font-family: 'Graffiti1c';
 }
+
+/* Hide scrollbar but keep scroll behavior */
+.scrollbar-none {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
