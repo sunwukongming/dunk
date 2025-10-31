@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import Button from '@/components/Button.vue'
 
-import { ref, onMounted, onUnmounted } from 'vue'
+import { onMounted, onUnmounted, ref } from 'vue'
 
 const el = ref<HTMLDivElement>()
 const zoom = ref(1)
 const cutHorizontal = ref(0)
 const cutVertical = ref(0)
+const ca = 'AX9s8YCScDJHekeyugJWi6LsCReEpzJJme9LAxLpump'
 
 const handleResize = () => {
   if (el.value) {
@@ -26,6 +27,89 @@ const handleResize = () => {
     console.log('zoom:', zoom.value, cutHorizontal.value, cutVertical.value)
   }
 }
+
+const open = (url: string) => {
+  window.open(url, '_blank')
+}
+
+const copy = (s: string) => {
+  if (navigator.clipboard && window.isSecureContext) {
+    // 使用 Clipboard API (现代浏览器且在安全上下文)
+    return navigator.clipboard
+      .writeText(s)
+      .then(() => {
+        showToast('COPY SUCCESS')
+        return true
+      })
+      .catch(() => false)
+  } else {
+    // 兼容老版本浏览器
+    const textarea = document.createElement('textarea')
+    textarea.value = s
+    textarea.setAttribute('readonly', '')
+    textarea.style.position = 'absolute'
+    textarea.style.left = '-9999px'
+    document.body.appendChild(textarea)
+    textarea.select()
+    try {
+      const result = document.execCommand('copy')
+      document.body.removeChild(textarea)
+      if (result) {
+        showToast('COPY SUCCESS')
+      }
+      return result
+    } catch (e) {
+      console.warn(e)
+      document.body.removeChild(textarea)
+      return false
+    }
+  }
+}
+
+const toast = () => {
+  // 简易toast弹窗
+  // 参数: msg 显示的消息, duration 显示时长（毫秒，默认2000ms）
+  return (msg: string, duration = 2000) => {
+    // 避免重复toast
+    const old = document.getElementById('custom-toast-container')
+    if (old) {
+      old.remove()
+    }
+
+    const toast = document.createElement('div')
+    toast.id = 'custom-toast-container'
+    toast.innerText = msg
+    Object.assign(toast.style, {
+      position: 'fixed',
+      left: '50%',
+      top: '24px',
+      transform: 'translateX(-50%)',
+      minWidth: '120px',
+      color: '#fff',
+      background: 'rgba(0,0,0,0.75)',
+      fontSize: '18px',
+      padding: '16px 36px',
+      borderRadius: '8px',
+      textAlign: 'center',
+      zIndex: 9999,
+      pointerEvents: 'none',
+      boxShadow: '0 4px 16px rgba(0,0,0,0.12)',
+      maxWidth: '70vw',
+      wordBreak: 'break-word',
+      transition: 'opacity 0.25s',
+      opacity: '1',
+    })
+    document.body.appendChild(toast)
+    setTimeout(() => {
+      toast.style.opacity = '0'
+      setTimeout(() => {
+        toast.remove()
+      }, 300)
+    }, duration)
+  }
+}
+
+const showToast = toast()
 
 onMounted(() => {
   // 添加事件监听
@@ -56,8 +140,50 @@ onUnmounted(() => {
     >
       <div>
         <div class="flex flex-col justify-center overflow-hidden">
-          <div class="flex">
-            <img class="grow" src="@/assets/images/svg/title.svg" />
+          <div class="flex relative">
+            <div class="absolute left-0 right-0 top-0 bottom-0 z-1">
+              <div
+                class="flex justify-center items-center"
+                :style="{
+                  marginTop: `${200 * zoom}px`,
+                  fontSize: `${110 * zoom}px`,
+                }"
+              >
+                DUNK.GAME
+              </div>
+              <div
+                class="whitespace-normal"
+                :style="{
+                  marginLeft: `${30 * zoom}px`,
+                  marginRight: `${30 * zoom}px`,
+                  fontSize: `${80 * zoom}px`,
+                  lineHeight: `${80 * zoom}px`,
+                }"
+              >
+                CA:AX9s8YCScDJHe
+              </div>
+              <div
+                class="whitespace-normal"
+                :style="{
+                  marginLeft: `${30 * zoom}px`,
+                  marginRight: `${30 * zoom}px`,
+                  fontSize: `${80 * zoom}px`,
+                  lineHeight: `${80 * zoom}px`,
+                }"
+              >
+                key...
+              </div>
+              <div class="flex justify-center items-center">
+                <Button
+                  class="aspect-3/1"
+                  :style="{ height: `${60 * zoom}px`, fontSize: `${30 * zoom}px` }"
+                  @click="copy(ca)"
+                >
+                  COPY
+                </Button>
+              </div>
+            </div>
+            <img class="grow" src="@/assets/images/svg/parchment.svg" />
           </div>
           <div
             class="grow flex flex-col gap-1"
@@ -65,8 +191,67 @@ onUnmounted(() => {
               marginTop: `${50 * zoom}px`,
             }"
           >
-            <div class="grid grid-cols-2 gap-6">
-              <Button class="grid-cols-1 aspect-3/1 grow">
+            <!-- <Button class="grid-cols-1 grow" :style="{ height: `${90 * zoom}px` }">
+              <img
+                :style="{
+                  width: `${32 * zoom}px`,
+                  height: `${32 * zoom}px`,
+                }"
+                src="@/assets/images/icon/dollar.svg"
+              />
+              <div
+                class="truncate"
+                :style="{
+                  fontSize: `${32 * zoom}px`,
+                }"
+              >
+                BUY $DUNK
+              </div>
+            </Button>
+            <Button class="grid-cols-1 grow" :style="{ height: `${90 * zoom}px` }">
+              <img
+                :style="{
+                  width: `${32 * zoom}px`,
+                  height: `${32 * zoom}px`,
+                }"
+                src="@/assets/images/icon/star.svg"
+              />
+              <div
+                class="truncate"
+                :style="{
+                  fontSize: `${32 * zoom}px`,
+                }"
+              >
+                FOLLOW TWITTER
+              </div>
+            </Button>
+            <Button class="grid-cols-1 grow" :style="{ height: `${90 * zoom}px` }">
+              <img
+                :style="{
+                  width: `${32 * zoom}px`,
+                  height: `${32 * zoom}px`,
+                }"
+                src="@/assets/images/icon/group-add.svg"
+              />
+              <div
+                class="truncate"
+                :style="{
+                  fontSize: `${32 * zoom}px`,
+                }"
+              >
+                JOIN TELEGRAM
+              </div>
+            </Button> -->
+            <div
+              class="grid grid-cols-2"
+              :style="{
+                gap: `${24 * zoom}px`,
+              }"
+            >
+              <Button
+                class="grid-cols-1 aspect-3/1 grow"
+                @click="open('https://jup.ag/tokens/AX9s8YCScDJHekeyugJWi6LsCReEpzJJme9LAxLpump')"
+              >
                 <img
                   :style="{
                     width: `${32 * zoom}px`,
@@ -83,7 +268,7 @@ onUnmounted(() => {
                   BUY $DUNK
                 </div>
               </Button>
-              <Button class="grid-cols-1 aspect-3/1 grow" disabled>
+              <Button class="grid-cols-1 aspect-3/1 grow" @click="open('https://x.com/DUNKORACLE')">
                 <img
                   :style="{
                     width: `${32 * zoom}px`,
@@ -101,8 +286,16 @@ onUnmounted(() => {
                 </div>
               </Button>
             </div>
-            <div class="grid grid-cols-2 gap-6">
-              <Button class="grid-cols-1 aspect-3/1 grow">
+            <div
+              class="grid grid-cols-2"
+              :style="{
+                gap: `${24 * zoom}px`,
+              }"
+            >
+              <Button
+                class="grid-cols-1 aspect-3/1 grow"
+                @click="open('https://t.me/+yAmuLbMSke43NTkx')"
+              >
                 <img
                   :style="{
                     width: `${32 * zoom}px`,
@@ -119,7 +312,10 @@ onUnmounted(() => {
                   JOIN TELEGRAM
                 </div>
               </Button>
-              <Button class="grid-cols-1 aspect-3/1 grow">
+              <Button
+                class="grid-cols-1 aspect-3/1 grow"
+                @click="open('https://x.com/i/communities/1983927527539405104/')"
+              >
                 <img
                   :style="{
                     width: `${32 * zoom}px`,
@@ -133,7 +329,7 @@ onUnmounted(() => {
                     fontSize: `${32 * zoom}px`,
                   }"
                 >
-                  JOIN DISCORD
+                  JOIN COMMUNITY
                 </div>
               </Button>
             </div>
