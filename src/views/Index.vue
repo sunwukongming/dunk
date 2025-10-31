@@ -185,64 +185,84 @@ onUnmounted(() => {
             </div>
             <img class="grow" src="@/assets/images/svg/parchment.svg" />
           </div>
-          <div
-            class="grow flex flex-col gap-1"
-            :style="{
-              marginTop: `${50 * zoom}px`,
-            }"
-          >
-            <!-- <Button class="grid-cols-1 grow" :style="{ height: `${90 * zoom}px` }">
-              <img
-                :style="{
-                  width: `${32 * zoom}px`,
-                  height: `${32 * zoom}px`,
-                }"
-                src="@/assets/images/icon/dollar.svg"
-              />
-              <div
-                class="truncate"
-                :style="{
-                  fontSize: `${32 * zoom}px`,
-                }"
-              >
-                BUY $DUNK
-              </div>
-            </Button>
-            <Button class="grid-cols-1 grow" :style="{ height: `${90 * zoom}px` }">
-              <img
-                :style="{
-                  width: `${32 * zoom}px`,
-                  height: `${32 * zoom}px`,
-                }"
-                src="@/assets/images/icon/star.svg"
-              />
-              <div
-                class="truncate"
-                :style="{
-                  fontSize: `${32 * zoom}px`,
-                }"
-              >
-                FOLLOW TWITTER
-              </div>
-            </Button>
-            <Button class="grid-cols-1 grow" :style="{ height: `${90 * zoom}px` }">
-              <img
-                :style="{
-                  width: `${32 * zoom}px`,
-                  height: `${32 * zoom}px`,
-                }"
-                src="@/assets/images/icon/group-add.svg"
-              />
-              <div
-                class="truncate"
-                :style="{
-                  fontSize: `${32 * zoom}px`,
-                }"
-              >
-                JOIN TELEGRAM
-              </div>
-            </Button> -->
+          <div class="grow flex flex-col gap-1" :style="{}">
             <div
+              class="flex flex-col"
+              :style="{
+                marginTop: `${20 * zoom}px`,
+                paddingLeft: `${45 * zoom}px`,
+                paddingRight: `${45 * zoom}px`,
+                gap: `${20 * zoom}px`,
+              }"
+            >
+              <Button
+                type="long"
+                class="grid-cols-1 grow"
+                :style="{ height: `${90 * zoom}px`, gap: `${4 * zoom}px` }"
+                @click="open('https://jup.ag/tokens/AX9s8YCScDJHekeyugJWi6LsCReEpzJJme9LAxLpump')"
+              >
+                <img
+                  :style="{
+                    width: `${32 * zoom}px`,
+                    height: `${32 * zoom}px`,
+                  }"
+                  src="@/assets/images/icon/dollar.svg"
+                />
+                <div
+                  class="truncate"
+                  :style="{
+                    fontSize: `${32 * zoom}px`,
+                  }"
+                >
+                  BUY $DUNK
+                </div>
+              </Button>
+              <Button
+                type="long"
+                class="grid-cols-1 grow"
+                :style="{ height: `${90 * zoom}px`, gap: `${4 * zoom}px` }"
+                @click="open('https://x.com/DUNKORACLE')"
+              >
+                <img
+                  :style="{
+                    width: `${32 * zoom}px`,
+                    height: `${32 * zoom}px`,
+                  }"
+                  src="@/assets/images/icon/star.svg"
+                />
+                <div
+                  class="truncate"
+                  :style="{
+                    fontSize: `${32 * zoom}px`,
+                  }"
+                >
+                  FOLLOW TWITTER
+                </div>
+              </Button>
+              <Button
+                type="long"
+                class="grid-cols-1 grow"
+                :style="{ height: `${90 * zoom}px`, gap: `${4 * zoom}px` }"
+                @click="open('https://t.me/+yAmuLbMSke43NTkx')"
+              >
+                <img
+                  :style="{
+                    width: `${32 * zoom}px`,
+                    height: `${32 * zoom}px`,
+                  }"
+                  src="@/assets/images/icon/group-add.svg"
+                />
+                <div
+                  class="truncate"
+                  :style="{
+                    fontSize: `${32 * zoom}px`,
+                  }"
+                >
+                  JOIN TELEGRAM
+                </div>
+              </Button>
+            </div>
+            <!-- <div
               class="grid grid-cols-2"
               :style="{
                 gap: `${24 * zoom}px`,
@@ -332,7 +352,7 @@ onUnmounted(() => {
                   JOIN COMMUNITY
                 </div>
               </Button>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
