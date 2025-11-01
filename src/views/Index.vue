@@ -38,7 +38,7 @@ const copy = (s: string) => {
     return navigator.clipboard
       .writeText(s)
       .then(() => {
-        showToast('COPY SUCCESS')
+        showToast('Address Copied')
         return true
       })
       .catch(() => false)
@@ -55,7 +55,7 @@ const copy = (s: string) => {
       const result = document.execCommand('copy')
       document.body.removeChild(textarea)
       if (result) {
-        showToast('COPY SUCCESS')
+        showToast('Address Copied')
       }
       return result
     } catch (e) {
@@ -140,7 +140,10 @@ onUnmounted(() => {
     >
       <div>
         <div class="flex flex-col justify-center overflow-hidden">
-          <div class="flex relative">
+          <div
+            class="flex relative"
+            :style="{ width: `${650 * zoom}px`, height: `${630 * zoom}px` }"
+          >
             <div class="absolute left-0 right-0 top-0 bottom-0 z-1">
               <div
                 class="flex justify-center items-center"
@@ -152,26 +155,15 @@ onUnmounted(() => {
                 DUNK.GAME
               </div>
               <div
-                class="whitespace-normal"
+                class="whitespace-normal break-all"
                 :style="{
                   marginLeft: `${30 * zoom}px`,
                   marginRight: `${30 * zoom}px`,
-                  fontSize: `${80 * zoom}px`,
-                  lineHeight: `${80 * zoom}px`,
+                  fontSize: `${50 * zoom}px`,
+                  lineHeight: `${60 * zoom}px`,
                 }"
               >
-                CA:AX9s8YCScDJHe
-              </div>
-              <div
-                class="whitespace-normal"
-                :style="{
-                  marginLeft: `${30 * zoom}px`,
-                  marginRight: `${30 * zoom}px`,
-                  fontSize: `${80 * zoom}px`,
-                  lineHeight: `${80 * zoom}px`,
-                }"
-              >
-                key...
+                CA:{{ ca }}
               </div>
               <div class="flex justify-center items-center">
                 <Button
@@ -243,7 +235,7 @@ onUnmounted(() => {
                 type="long"
                 class="grid-cols-1 grow"
                 :style="{ height: `${90 * zoom}px`, gap: `${4 * zoom}px` }"
-                @click="open('https://t.me/+yAmuLbMSke43NTkx')"
+                @click="open('https://t.me/+yVoOz8ZN2IViMjgx')"
               >
                 <img
                   :style="{
