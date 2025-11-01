@@ -235,7 +235,7 @@ onUnmounted(() => {
                 type="long"
                 class="grid-cols-1 grow"
                 :style="{ height: `${90 * zoom}px`, gap: `${4 * zoom}px` }"
-                @click="open('https://t.me/+yVoOz8ZN2IViMjgx')"
+                @click="open('https://t.me/DUNKTOWIN')"
               >
                 <img
                   :style="{
