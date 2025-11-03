@@ -128,10 +128,11 @@ onUnmounted(() => {
 <template>
   <div
     ref="el"
-    class="bg-[url('@/assets/images/svg/background.svg')] h-screen w-screen bg-no-repeat bg-center bg-cover overflow-auto scrollbar-none"
+    class="bg-[url('@/assets/images/svg/background-mobile.svg')] sm:bg-[url('@/assets/images/svg/background.svg')] h-screen w-screen bg-no-repeat bg-center bg-cover overflow-auto scrollbar-none"
   >
     <!-- 固定画布(1920x1080) 等比缩放到任意分辨率，使 1k/2k/4k 视觉一致 -->
     <div
+      class="hidden sm:block"
       :style="{
         width: `${650 * zoom}px`,
         marginLeft: `${700 * zoom - cutHorizontal}px`,
@@ -346,6 +347,13 @@ onUnmounted(() => {
               </Button>
             </div> -->
           </div>
+        </div>
+      </div>
+    </div>
+    <div class="block sm:hidden">
+      <div class="flex flex-col justify-center overflow-hidden">
+        <div>
+          <div></div>
         </div>
       </div>
     </div>
