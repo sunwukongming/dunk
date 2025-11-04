@@ -350,11 +350,51 @@ onUnmounted(() => {
         </div>
       </div>
     </div>
-    <div class="block sm:hidden">
-      <div class="flex flex-col justify-center overflow-hidden">
-        <div>
-          <div></div>
+    <div class="sm:hidden h-full flex flex-col justify-center items-center overflow-hidden">
+      <div class="flex justify-center items-center relative">
+        <div class="w-50 h-50 relative">
+          <img class="relative z-10" src="@/assets/images/svg/logo-mobile.svg" />
+          <img class="absolute -right-16 -bottom-20" src="@/assets/images/svg/side-mobile.svg" />
         </div>
+      </div>
+      <div
+        class="flex flex-col items-center bg-[url('@/assets/images/svg/parchment-mobile.svg')] bg-no-repeat bg-center bg-cover w-90 h-64"
+      >
+        <div class="mt-30 text-4xl">DUNK.GAME</div>
+        <div class="mt-1 text-xl">CA:{{ ca.substring(0, 30) }}</div>
+        <div class="mt-1 grid grid-cols-3 items-center">
+          <div></div>
+          <div class="text-xl">{{ ca.substring(30) }}</div>
+          <div class="flex justify-center">
+            <Button class="aspect-3/1 w-20" @click="copy(ca)"> COPY </Button>
+          </div>
+        </div>
+      </div>
+      <div class="mt-2 flex flex-col gap-3">
+        <Button
+          type="long"
+          class="grid-cols-1 gap-1 grow w-60 aspect-6/1 text-normal"
+          @click="open('https://jup.ag/tokens/AX9s8YCScDJHekeyugJWi6LsCReEpzJJme9LAxLpump')"
+        >
+          <img class="size-6" src="@/assets/images/icon/dollar.svg" />
+          <div class="truncate">BUY $DUNK</div>
+        </Button>
+        <Button
+          type="long"
+          class="grid-cols-1 grow aspect-6/1 text-normal"
+          @click="open('https://x.com/DUNKORACLE')"
+        >
+          <img class="size-6" src="@/assets/images/icon/star.svg" />
+          <div class="truncate">FOLLOW TWITTER</div>
+        </Button>
+        <Button
+          type="long"
+          class="grid-cols-1 grow aspect-6/1 text-normal"
+          @click="open('https://t.me/DUNKTOWIN')"
+        >
+          <img class="size-6" src="@/assets/images/icon/group-add.svg" />
+          <div class="truncate">JOIN TELEGRAM</div>
+        </Button>
       </div>
     </div>
   </div>
