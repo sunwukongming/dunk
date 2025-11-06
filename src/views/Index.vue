@@ -229,7 +229,7 @@ onUnmounted(() => {
                     fontSize: `${32 * zoom}px`,
                   }"
                 >
-                  FOLLOW TWITTER
+                  FOLLOW X
                 </div>
               </Button>
               <Button
@@ -385,7 +385,7 @@ onUnmounted(() => {
           @click="open('https://x.com/DUNKORACLE')"
         >
           <img class="size-6" src="@/assets/images/icon/star.svg" />
-          <div class="truncate">FOLLOW TWITTER</div>
+          <div class="truncate">FOLLOW X</div>
         </Button>
         <Button
           type="long"
